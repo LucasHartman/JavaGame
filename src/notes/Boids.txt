@@ -1,0 +1,42 @@
+-----------------------------------------------------
+                        Boids
+        simulation models flocking behavior
+-----------------------------------------------------
+
+-- Coherence
+-   Each boid flies towards the other boids.
+-   But don't immediately fly directly at each other
+-   They gradually steer towards each other,
+    at the rate that you can adjust with the "coherence slider" 
+
+-- Separation
+-   Each boid tries to avoid running into the other boids.
+-   If it gets too close to another boid it will steer away
+-   You can control how quickly it steer with the "separation slider.
+
+-- Alignment
+-   Each boid tries to match the vector (speed and direction)
+    of the other boids around it.
+-   You can control how quickly they try to match vectors using the "coherence slider"
+
+---
+
+Source: https://adamprice.io/blog/boids.html
+Source: http://www.red3d.com/cwr/boids/
+
+Boid.pos
+Boid.direction
+Boid.speed
+Boid.radius
+Boid.neighborDistance
+Boid.neighborAngle
+
+numNeighbor
+n1.effectRate   = Boid.radius - n1.distance = rate
+n2.effectRate
+n3.effectRate
+
+
+-- Coherence
+-   
+

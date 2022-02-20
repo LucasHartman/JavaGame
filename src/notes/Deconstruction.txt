@@ -1,0 +1,256 @@
+-----------------------------------------------------
+
+-- File structure
+- Source: https://zetcode.com/javagames/basics/
+-   JPanel --Extends--> Board --Import--> App
+
+-----------------------------------------------------
+
+-- Sprite Class
+
+-- Sprite Constructor
+    - get position
+    - visible on
+
+-- getImageDimensions() method
+    - get image with and height
+
+-- loadImage() method
+    - instance ImageIcon() method
+    - get image
+
+-- getImage() method
+    - return image
+
+-- getX method()
+    - return x
+
+-- getY method()
+    - return y
+
+-- isVisible() method
+    - return visible
+
+-- setVisible() method
+    - set instance variable
+
+-- getBounds() method
+    - return bounding box
+
+-----------------------------------------------------
+
+-- Class Missile
+    - extends Sprite
+
+-- Missile Constructor
+    - initialize initMissle() method
+
+-- initMissile() Method()
+    - load image
+    - get image size
+
+-- move() method
+    - move horizontal direction
+    - is position is great then board size, set visible of
+
+-----------------------------------------------------
+
+-- SpaceShip Class
+    -   In this class we keep the image of 
+        the sprite and the coordinates of the sprite. 
+
+
+-   SpaceShip Constructor
+    - call parent constructor
+    - Initialize initSpaceShip() method
+
+
+- initCraft() method
+    - declare missiles list
+    - loadImage
+    - get image dimensions
+
+
+- move() method
+    - set current position
+    - if posX is < 1, set posX to 1 (aka always greater)
+    - if posY is < 1, set posY to 1 (aka always greater)
+
+
+- getMissiles() method
+    - return missiles list
+
+
+- keyPressed() method
+    - space-bar: fire missile
+    - Left
+    - Right
+    - Up
+    - Down
+
+
+- fire() method
+    - add new missile to missiles list
+
+
+- keyReleased() method
+    - Left
+    - Right
+    - Up
+    - Down
+
+-----------------------------------------------------
+
+-- Board Class
+    - The Board is a panel where the game takes place. 
+
+-   Board() Constructor
+    - initialize initBoard() method
+
+-   initBoard() Method
+    - add keyboard method
+    - focus on this component
+    - set background color
+    - ingame true  ???
+    - component size
+    - instance spaceShip
+    - initialize initAliens()
+    - instance time
+    - start time
+
+-- initAliens() method
+    - declare aliens list
+    - loop position list 
+        - construct alien and at to aliens list
+    
+- paintComponent() method
+    - Override paintComponent
+    - if ingame is true
+        - drawObject() method
+    - else 
+        - drawGameOver method
+    - sync, update graphics as soon as possible
+
+-- drawObjects() method
+    - if spaceships is visible
+        - draw spaceship
+
+    initialize missiles list
+
+    - for missile in list
+        - if missile is visible
+            - draw missile image
+
+    - for alien is list
+        - if aliens is visible
+            - draw alien image
+
+    - graphics color
+    - draw text on screen
+
+-- drawGameOver
+    - text color
+    - text font size
+    - draw text
+
+-- actionPerformed() method
+    - initialize inGame() method
+    - initialize updateShip() method
+    - initialize updateMissiles() method
+    - initialize updateAliens() method
+    - initialize checkCollisions() method
+    - initialize repaint() method
+
+-- inGame() method
+    - if ingame false
+        - stop time
+
+-- updateShip() method
+    - if spaceship is visible
+    - move spaceship
+
+-- updateMissiles()
+    - initialize missiles list
+    - for loop
+        - get missile from list
+
+        if missile is visible
+            - move missile
+        else
+            - remove missile from list
+
+-- updateAliens() method
+    - if aliens list is empty
+        - set ingame to false
+        - return nothing ?
+    - for loop
+        - get alien from list
+        - if aliens is visible
+            - move alien
+        - else  
+            - remove alien from list
+
+-- checkCollisions() method
+    - initialize bound shape
+    - for aliens in list
+        - initialize bound shape
+        - if bound_shape 3 intersects bound_shape 3
+            - missile to invisible
+            - alien to invisible
+
+
+inner class TAdapter
+    - extends KeyAdapter
+
+    - keyReleased() Method
+
+    - keyPressed() Method
+
+-----------------------------------------------------
+
+-- ShootingMissilesEx
+
+-- ShootingMissilesEx Constructor
+    - initialize initUI()
+
+-- initUI()
+    - add Board Constructor
+    - set window size
+    - window resizable off
+    - set title
+    - set window screen location
+    - close app operation
+
+-- main() Method:
+    - instance of our code example and make it visible on the screen. 
+ 
+ -----------------------------------------------------
+-- CollisionEx Class
+
+-- CollisionEx Constructor
+    - initialize initUI
+
+-- initUI() method
+    - 
+
+
+ -----------------------------------------------------
+
+-- Alien Class
+    - extends Sprite
+
+-- Alien Constructor
+    - call parent constructor
+    - initialize initAlien() method
+
+-- initAlien() method
+    - load image
+    - get image size
+
+-- move() method
+    - if x is lesser than 0
+        - set to initial x
+    - x -= 1 ????
+
+
+ -----------------------------------------------------

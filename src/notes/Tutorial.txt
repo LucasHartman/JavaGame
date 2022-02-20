@@ -1,0 +1,92 @@
+-----------------------------------------------------
+-- Create Jar:
+-   mvn clean install
+
+-- Run Jar:    
+-   CommandLine:    java -jar target\JavaGame-1.0-jar-with-dependencies.jar
+
+-- Pixel Art Assets Packs
+- Source:   https://itch.io/game-assets/free/tag-pixel-art
+
+-- Draw Static Image
+-   Create File, for loading the image object
+-   Initialize the class constructor inside Board file - initBoard method
+-   Initialize methods inside the drawObjects methods like this:
+        g.drawImage(block.getImage(), block.getX(), block.getY(),this);
+-   Create an intersect between to object, inside checkCollisions() method
+
+-----------------------------------------------------
+Draw Static Image
+-----------------------------------------------------
+
+-- create new "Game Object" file:
+
+        public class GameObject extends Sprite {
+            public GameObject(int x, int y) {
+                super(x,y);
+                initImage();
+            }
+
+            private void initImage() {
+                loadImage("src/resources/block1x1.png");
+                getImageDimensions();
+            }
+        }
+
+-- Add "Game Object" to Board.java
+
+-   1. Declare instance variable:
+
+            private GameObject gameObject;
+
+-   2. Initialize "Game Object:
+
+        private void initBoard() {
+            block = new Block(80,120);
+        }
+-   3. Apply Graphic
+
+    private void drawObjects(Graphics g) {
+        g.drawImage(gameObject.getImage(), gameObject.getX(), gameObject.getY(),this);
+    }
+
+-   4. Set Collisions
+
+    public void checkCollisions() {
+        // Collision SpaceShip/GameObject
+        Rectangle r3 = spaceship.getBounds();
+        Rectangle r4 = block.getBounds();
+        if (r3.intersects(r4)) {
+            spaceship.setVisible(false);
+            block.setVisible(false);
+            ingame = false;
+        }
+    }
+
+-----------------------------------------------------
+Moving Update
+-----------------------------------------------------
+
+-   0.  Follow step from "Draw Static Image"
+
+-   1.  Add move function to "GameObject"
+
+            public void move() {
+                if (x < 0) {
+                    x = INITIAL_X;
+                }
+                x -= 1;
+            }
+
+-   2. Declare Update Method in the Board.java
+
+        private void updateGameObject() {
+            GameObject.move();
+        }
+
+-   3. Initialize updateGameObject:
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            updateGameObject();
+        }

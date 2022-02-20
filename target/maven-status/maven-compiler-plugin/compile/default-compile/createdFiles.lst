@@ -1,0 +1,10 @@
+com\packs\app\Board.class
+com\packs\app\SpaceShip.class
+com\packs\app\Alien.class
+com\packs\app\Sprite.class
+com\packs\app\BlockMoves.class
+com\packs\app\Board$1.class
+com\packs\app\Missile.class
+com\packs\app\Block.class
+com\packs\app\CollisionEx.class
+com\packs\app\Board$TAdapter.class
