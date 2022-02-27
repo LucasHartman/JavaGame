@@ -23,6 +23,7 @@ public class Board extends JPanel implements ActionListener {
     private Block block;
     private BlockMoves blockMoves;
     private List<Alien> aliens;
+    private List<Actor> actors;
     private boolean ingame;
     private final int ICRAFT_X = 40;
     private final int ICRAFT_Y = 60;
@@ -41,6 +42,10 @@ public class Board extends JPanel implements ActionListener {
         {900, 259}, {660, 50}, {540, 90},
         {810, 220}, {860, 20}, {740, 180},
         {820, 128}, {490, 170}, {700, 30}
+    };
+
+    private final int[][] posActors = {
+        {200,0}
     };
 
     public Board() {
@@ -62,6 +67,7 @@ public class Board extends JPanel implements ActionListener {
         blockMoves = new BlockMoves(120,160);
 
         initAliens();
+        initActors();
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -73,6 +79,16 @@ public class Board extends JPanel implements ActionListener {
 
         for (int[] p : pos) {
             aliens.add(new Alien(p[0], p[1]));
+        }
+    }
+
+
+    public void initActors() {
+        
+        actors = new ArrayList<>();
+
+        for (int[] p : posActors) {
+            actors.add(new Actor(p[0], p[1]));
         }
     }
 
@@ -93,6 +109,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void drawObjects(Graphics g) {
+        // Draw Objects to screen
 
         g.drawImage(block.getImage(), block.getX(), block.getY(),this);
         g.drawImage(blockMoves.getImage(), blockMoves.getX(), blockMoves.getY(),this);
@@ -114,6 +131,12 @@ public class Board extends JPanel implements ActionListener {
         for (Alien alien : aliens) {
             if (alien.isVisible()) {
                 g.drawImage(alien.getImage(), alien.getX(), alien.getY(), this);
+            }
+        }
+
+        for (Actor actor : actors) {
+            if (actor.isVisible()) {
+                g.drawImage(actor.getImage(), actor.getX(), actor.getY(), this);
             }
         }
 
@@ -142,6 +165,7 @@ public class Board extends JPanel implements ActionListener {
         updateMissiles();
         updateAliens();
         updateBlockMoves();
+        updateActors();
 
         checkCollisions();
 
@@ -195,6 +219,27 @@ public class Board extends JPanel implements ActionListener {
                 a.move();
             } else {
                 aliens.remove(i);
+            }
+        }
+    }
+
+
+    private void updateActors() {
+
+        if (actors.isEmpty()) {
+
+            ingame = false;
+            return;
+        }
+
+        for (int i = 0; i < actors.size(); i++) {
+
+            Actor a = actors.get(i);
+            
+            if (a.isVisible()) {
+                a.move();
+            } else {
+                actors.remove(i);
             }
         }
     }

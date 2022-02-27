@@ -1,0 +1,2 @@
+-- Find out a way for an actor to move away from other actors
+-   see Actor.java file for notes

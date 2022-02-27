@@ -7,4 +7,5 @@ com\packs\app\Board$1.class
 com\packs\app\Missile.class
 com\packs\app\Block.class
 com\packs\app\CollisionEx.class
+com\packs\app\Actor.class
 com\packs\app\Board$TAdapter.class
